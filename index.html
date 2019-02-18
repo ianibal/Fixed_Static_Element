@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Fixed/Static button</title>
+    <style>
+        *{
+            font-family: Arial, Helvetica, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            -webkit-font-smoothing: antialiased;
+        }
+        #container{
+            padding: 1rem;
+            font-size: 0.9rem;
+            line-height: 1.6rem;
+        }
+        #btn{
+            display: block;
+            width: 90%;
+            font-size: 1.1rem;
+            margin: 1rem 5%;
+            padding: 0.5rem 0.7rem;
+            border: none;
+            color: white;
+            text-shadow: none;
+            background: tomato;
+            border-radius: 5px;
+        }
+        #btn.fixed{
+            position: fixed;
+            z-index: 900;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            width: 100%;
+            margin: 0;
+            border-radius: 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container"></div>
+    <button id="btn">Ok</button>
+
+    <!-- Scripts -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script>
+        $(document).ready(function(){
+            // Auto fill for content
+            var myText = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus diam mi, finibus id ornare ac, viverra id tortor. Ut neque sapien, sagittis dignissim neque quis, suscipit iaculis leo. Sed vitae purus efficitur, vestibulum neque dignissim, porttitor arcu. Aenean eget varius nunc. Integer interdum ornare velit vitae bibendum. Aliquam nec libero ac purus pretium varius. Sed eu luctus lectus. Pellentesque eget elementum libero. Pellentesque malesuada sem sed neque sodales lobortis. Mauris in luctus leo, non suscipit urna. Quisque dictum ipsum felis, laoreet mollis justo hendrerit at. Sed finibus enim ut massa iaculis mattis. Vivamus facilisis mauris quis lectus vestibulum, ac dignissim augue bibendum. Nunc ut nibh porttitor, viverra purus sit amet, pellentesque tortor. Sed elementum dignissim ultricies. Pellentesque non metus euismod, venenatis risus eu, consequat libero. Proin suscipit, augue vel finibus consectetur, nulla turpis fringilla orci, sed maximus neque sem et nisl. Fusce imperdiet luctus ligula id hendrerit. Curabitur ac elementum erat, id cursus dolor. Maecenas velit orci, tempor vitae elit ac, facilisis egestas diam. Morbi magna libero, feugiat eu dui nec, scelerisque cursus risus. Maecenas interdum nisi et turpis dapibus suscipit. Vestibulum ante ipsum primis in faucibus orci luctus et ultrices posuere cubilia Curae; Vivamus ut diam tincidunt, blandit magna ac, dapibus sem. Donec quis convallis elit. Phasellus sed ullamcorper dolor, eu faucibus metus. Suspendisse accumsan, felis a consequat lobortis, urna justo blandit est, placerat pellentesque nulla dui dapibus elit. Suspendisse vitae iaculis turpis. Aliquam lacinia libero nunc, quis scelerisque dolor porta nec. Etiam eget sapien eu nisl bibendum pulvinar in sit amet tellus. Vestibulum pharetra massa quis purus fringilla, vel semper quam aliquam. Etiam diam metus, sodales id dapibus eget, laoreet sed purus. Maecenas hendrerit elementum tempus. Pellentesque elit augue, blandit quis justo rhoncus, tincidunt porta libero.';
+            var randomLength = Math.floor((Math.random() * 999) + 1);
+            var myVarText = myText.substr(0, randomLength);
+
+            $('#container').html('<p>' + myVarText + '</p>');
+
+
+            // Calculate device and content height to set or not fixed button
+            var winHeight = $(window).height();
+            var content = $('#container').height() + $('#btn').height();
+
+            if (content <= winHeight){
+                $('#btn').addClass('fixed');
+            }
+        });
+    </script>
+
+</body>
+</html>
